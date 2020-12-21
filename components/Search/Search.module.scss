@@ -28,7 +28,6 @@
     margin-bottom: 2rem;
 }
 .search-result {
-    opacity: 0;
     width: 100%;
     top: 1rem;
     font-size: 1.6rem;
@@ -36,27 +35,25 @@
     position: relative;
     background-color: var(--white);
     box-shadow: 0 .8rem 2rem rgba(0,0,0,0.1);
-    visibility: hidden;
-    padding: 0;
-    height: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 40rem;
     transition: all .5s;
     &.animated {
-        height: auto;
-        padding: 2rem;
-        max-height: 30rem;
-        overflow: hidden;
-        overflow-y: auto;
-        visibility: visible;
         animation: animateSearchResult .5s ease;
         animation-fill-mode: both;
     }
 }
-.search-blur-result {
-    font-size: 1.6rem;
-    max-height: 30rem;
-    overflow: hidden;
-    overflow-y: auto;
-    border-radius: 1rem;
+.filters {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.filter-title {
+    color: var(--grey-darkest);
+    font-size: 1.8rem;
+    margin: 0 1rem;
 }
 
 @keyframes animateBackdrop {
@@ -76,14 +73,9 @@
 
 @keyframes animateSearchResult {
     0% {
-        opacity: 0;
         transform: translateY(10rem);
     }
-    50% {
-        opacity: .5;
-    }
     100% {
-        opacity: 1;
         transform: translateY(0);
     }
 }

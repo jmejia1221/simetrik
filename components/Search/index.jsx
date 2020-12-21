@@ -3,23 +3,46 @@ import React, { useState } from 'react';
 // Components
 import Input from '../UI/Input';
 import SearchContent from './SearchContent';
+import Tags from '../UI/tags';
 
 // CSS
 import styles from './Search.module.scss';
 
 const Search = (props) => {
     const [searchFocus, setSearchFocus] = useState(false);
+    const [filterSelected, setFilterSelected] = useState('text');
 
     const searchFocused = () => {
         let isFocus = !searchFocus;
         setSearchFocus(isFocus);
     };
 
+    const tagsConfg = [
+        {
+            label: 'Text',
+            value: 'text'
+        },
+        {
+            label: 'Number',
+            value: 'number'
+        },
+        {
+            label: 'Date',
+            value: 'date'
+        }
+    ];
+
+    const filterByDataType = (value) => {
+        setFilterSelected(value);
+    }
+
     let backdropClasses = [styles['search-backdrop']];
     let searchResultClasses = [styles['search-result']];
+    let expandButton = [styles.expandAll];
     if (searchFocus) {
         backdropClasses.push(styles.animated);
         searchResultClasses.push(styles.animated);
+        expandButton.push(styles.animated);
     }
 
     let conciliaciones = null,
@@ -64,11 +87,25 @@ const Search = (props) => {
                 <div
                     className={backdropClasses.join(' ')}>
                 </div>
-                <h1 className={styles['search-title']}>
-                    Simetrik Search
-                </h1>
+                <header>
+                    <h1 className={styles['search-title']}>
+                        Simetrik Search
+                    </h1>
+                    <div className={styles['filters']}>
+                        <h4 className={styles['filter-title']}>Filters</h4>
+                        { tagsConfg.map((tag, i) => (
+                            <Tags
+                                key={i + '' + tag}
+                                active={filterSelected}
+                                value={tag.value}
+                                clicked={filterByDataType}>
+                                <span>{tag.label}</span>
+                            </Tags>
+                        )) }
+                    </div>
+                </header>
                 <Input
-                    type="text"
+                    type={filterSelected}
                     value={props.search}
                     onChange={props.handlerSearch}
                     onFocus={searchFocused}
@@ -76,17 +113,11 @@ const Search = (props) => {
                     placeholder="Search Data"
                     hasanimation="true" />
                 <div className={searchResultClasses.join(' ')}>
-                    {searchFocus && usuarios && usuarios.slice(0, 4)}
-                    {searchFocus && tableros && tableros.slice(0, 4)}
-                    {searchFocus && conciliaciones && conciliaciones.slice(0, 4)}
-                    {searchFocus && fuentes && fuentes.slice(0, 4)}
+                    {usuarios && usuarios.slice(0, 10)}
+                    {tableros && tableros.slice(0, 10)}
+                    {conciliaciones && conciliaciones.slice(0, 10)}
+                    {fuentes && fuentes.slice(0, 10)}
                 </div>
-            </div>
-            <div className={styles['search-blur-result']}>
-                {!searchFocus && usuarios && usuarios.slice(0, 4)}
-                {!searchFocus && tableros && tableros.slice(0, 4)}
-                {!searchFocus && conciliaciones && conciliaciones.slice(0, 4)}
-                {!searchFocus && fuentes && fuentes.slice(0, 4)}
             </div>
         </>
     )

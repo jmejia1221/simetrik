@@ -51,21 +51,45 @@ const App = () => {
 
     const searchByType = (data, searchInput, type) => {
         data.forEach((infoItem, i) => {
-            if (type !== 'usuariosResult' && infoItem.description.includes(searchInput.toLowerCase())) {
+            if (type === 'usuariosResult' && (
+                infoItem.email.includes(searchInput.toLowerCase()) ||
+                infoItem.address.includes(searchInput.toLowerCase()) ||
+                infoItem.name.firstName.includes(searchInput.toLowerCase()) ||
+                infoItem.name.lastName.includes(searchInput.toLowerCase()) ||
+                infoItem.gender.includes(searchInput.toLowerCase())
+            )) {
                 initialData[type].push(infoItem);
             }
-            if (type === 'usuariosResult' && infoItem.email.includes(searchInput.toLowerCase())) {
-                // debugger
+            if (type === 'tablerosResult' && (
+                infoItem.description.includes(searchInput.toLowerCase()) ||
+                infoItem.dashboardName.includes(searchInput.toLowerCase())
+            )) {
+                initialData[type].push(infoItem);
+            }
+            if (type === 'fuentesResult' && (
+                infoItem.description.includes(searchInput.toLowerCase()) ||
+                infoItem.name.includes(searchInput.toLowerCase()) ||
+                infoItem.company.includes(searchInput.toLowerCase())
+            )) {
+                initialData[type].push(infoItem);
+            }
+            if (type === 'conciliacionesResult' && (
+                infoItem.description.includes(searchInput.toLowerCase()) ||
+                infoItem.sourceA.includes(searchInput.toLowerCase()) ||
+                infoItem.conciliationName.includes(searchInput.toLowerCase()) ||
+                infoItem.balance.includes(searchInput.toLowerCase()) ||
+                infoItem.sourceB.includes(searchInput.toLowerCase())
+            )) {
                 initialData[type].push(infoItem);
             }
         });
     }
 
     const filterData = (searchInput) => {
-        initialData.conciliacionesResult = [];
         initialData.fuentesResult = [];
         initialData.tablerosResult = [];
         initialData.usuariosResult = [];
+        initialData.conciliacionesResult = [];
         allData.forEach(item => {
             switch(item.type) {
                 case 'conciliaciones':
@@ -91,12 +115,15 @@ const App = () => {
             {type: 'tableros', data: [...initialData.tablerosResult]},
             {type: 'usuarios', data: [...initialData.usuariosResult]}
         ];
+
         setSearchResult(initialData.result);
         console.log('filtered', initialData.result)
     };
 
     const handlerSearch = (e) => {
-        setSearch(e.target.value);
+        let value = e.target.value;
+        if (e.target.type === 'date') value.toString("yyyyMMdd");
+        setSearch(value);
         filterData(search);
     }
 

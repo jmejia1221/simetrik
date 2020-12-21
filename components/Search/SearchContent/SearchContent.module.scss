@@ -5,7 +5,7 @@
     display: flex;
     align-items: baseline;
 }
-.searchDescription {
+.blockInfo {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -25,17 +25,17 @@
 }
 .tag-conciliaciones {
     color: var(--white);
-    background-color: #023047;
+    background-color: var(--conciliaciones);
 }
 .tag-usuarios {
     color: var(--white);
-    background-color: #0077b6;
+    background-color: var(--usuarios);
 }
 .tag-fuentes {
     color: var(--white);
-    background-color: #01baef;
+    background-color: var(--fuentes);
 }
 .tag-tableros {
     color: var(--white);
-    background-color: #7400b8;
+    background-color: var(--tableros);
 }

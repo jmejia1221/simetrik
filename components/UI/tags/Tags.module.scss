@@ -1,0 +1,15 @@
+.tag {
+    font-size: 1.2rem;
+    background-color: var(--grey-lighter);
+    border-radius: .4rem;
+    padding: .5rem 2rem;
+    margin-right: 1rem;
+    display: inline-block;
+    cursor: pointer;
+}
+.active {
+    color: var(--white);
+    font-weight: bold;
+    transition: all .5s;
+    background-color: var(--tableros);
+}
