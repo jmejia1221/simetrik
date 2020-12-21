@@ -36,7 +36,8 @@ Created by [@johnmejiah](https://twitter.com/johnmejiah) para [Semtrik](https://
     npm run dev
     ```
 
-    El sitio estará disponible en http://localhost:3000.
+    Para que el sitio corra localmente descomentar `// const URL = 'http://localhost:3000/api';` y
+    comentar `const URL = 'https://simetrik.vercel.app/api'` esto está localizado en `pages > index.jsx`;
 
 ### Cuestionario
 1. ¿Por qué no debería usar la librería JQuery, si estoy usando ReactJS? 

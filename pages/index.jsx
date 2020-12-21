@@ -16,10 +16,7 @@ const initialData = {
 
 const getPromise = (url, type) => {
     return new Promise((resolve, reject) => {
-        fetch(url, {'mode': 'cors',
-            'headers': {
-                'Access-Control-Allow-Origin': '*',
-        }})
+        fetch(url)
             .then(response => {
                 return response.json();
             })
