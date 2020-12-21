@@ -24,9 +24,11 @@ const Input = (props) => {
                     <FontAwesomeIcon
                         className={styles['search-icon']}
                         icon={faSearch} />
-                    <FontAwesomeIcon
-                        className={styles['arrow-icon']}
-                        icon={faChevronRight} />
+                    {props.type === 'text' && (
+                        <FontAwesomeIcon
+                            className={styles['arrow-icon']}
+                            icon={faChevronRight} />
+                    )}
                 </>
             )}
         </div>

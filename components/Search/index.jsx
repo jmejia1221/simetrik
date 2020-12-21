@@ -7,6 +7,8 @@ import Tags from '../UI/tags';
 
 // CSS
 import styles from './Search.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Search = (props) => {
     const [searchFocus, setSearchFocus] = useState(false);
@@ -104,14 +106,22 @@ const Search = (props) => {
                         )) }
                     </div>
                 </header>
-                <Input
-                    type={filterSelected}
-                    value={props.search}
-                    onChange={props.handlerSearch}
-                    onFocus={searchFocused}
-                    onBlur={searchFocused}
-                    placeholder="Search Data"
-                    hasanimation="true" />
+                <div className={styles.inputContent}>
+                    <Input
+                        type={filterSelected}
+                        value={props.search}
+                        onChange={props.handlerSearch}
+                        onFocus={searchFocused}
+                        onBlur={searchFocused}
+                        placeholder="Search Data"
+                        hasanimation="true" />
+                    { props.search && (
+                        <button onClick={props.cleanSearchBar}>
+                            <FontAwesomeIcon className={styles.cleanIcon} icon={faTimes} />
+                            Clean
+                        </button>
+                    )}
+                </div>
                 <div className={searchResultClasses.join(' ')}>
                     {usuarios && usuarios.slice(0, 10)}
                     {tableros && tableros.slice(0, 10)}

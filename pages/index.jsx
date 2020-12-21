@@ -47,7 +47,6 @@ const App = () => {
 
         promises.then(result => {
             setAllData(result);
-            console.log(result)
         })
         .catch(err => console.log(err));
 
@@ -121,12 +120,18 @@ const App = () => {
         ];
 
         setSearchResult(initialData.result);
-        console.log('filtered', initialData.result)
     };
+
+    const cleanSearchBarHandler = () => {
+        setSearch('');
+        setSearchResult([]);
+    }
 
     const handlerSearch = (e) => {
         let value = e.target.value;
+
         if (e.target.type === 'date') value.toString("yyyyMMdd");
+
         setSearch(value);
         filterData(search);
     }
@@ -136,6 +141,7 @@ const App = () => {
             <section className={styles.content}>
                 <Search
                     search={search}
+                    cleanSearchBar={cleanSearchBarHandler}
                     searchResult={searchResult}
                     handlerSearch={handlerSearch} />
             </section>

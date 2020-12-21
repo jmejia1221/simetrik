@@ -55,6 +55,22 @@
     font-size: 1.8rem;
     margin: 0 1rem;
 }
+.inputContent {
+    display: flex;
+    button {
+        cursor: pointer;
+        position: relative;
+        flex: 1 1 100px;
+        border: 0;
+        font-size: 1.6rem;
+        color: var(--primary);
+        font-weight: bold;
+        background-color: transparent;
+        .cleanIcon {
+            margin-right: .5rem;
+        }
+    }
+}
 
 @keyframes animateBackdrop {
     0% {
