@@ -2,5 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/api/tableros": "pages/api/tableros.js",
+  "/api/conciliaciones": "pages/api/conciliaciones.js",
+  "/api/usuarios": "pages/api/usuarios.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/api/fuentes": "pages/api/fuentes.js"
 }

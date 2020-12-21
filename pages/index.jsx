@@ -16,7 +16,10 @@ const initialData = {
 
 const getPromise = (url, type) => {
     return new Promise((resolve, reject) => {
-        fetch(url)
+        fetch(url, {'mode': 'cors',
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+        }})
             .then(response => {
                 return response.json();
             })
@@ -32,7 +35,8 @@ const App = () => {
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
-        const URL = 'http://localhost:3000/api';
+        // const URL = 'http://localhost:3000/api';
+        const URL = 'https://simetrik.vercel.app/api';
 
         const p1 = getPromise(URL + '/conciliaciones/', 'conciliaciones');
         const p2 = getPromise(URL + '/fuentes/', 'fuentes');
