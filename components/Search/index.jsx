@@ -1,8 +1,8 @@
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 import React, { useState } from 'react';
 
 // Components
 import Input from '../UI/Input';
+import SearchContent from './SearchContent';
 
 // CSS
 import styles from './Search.module.scss';
@@ -22,19 +22,41 @@ const Search = (props) => {
         searchResultClasses.push(styles.animated);
     }
 
-    let searchedResult = null;
+    let conciliaciones = null,
+        fuentes = null,
+        tableros = null,
+        usuarios = null
 
     if (props.searchResult.length) {
         props.searchResult.forEach((resultType) => {
-            console.log('type', resultType)
-            if (resultType.type !== 'usuarios') {
-                searchedResult = resultType.data.map((data, i) => {
-                    return <p key={data._id}>{data.description}</p>
-                });
-                // debugger
-            }
+            if (resultType.type === 'conciliaciones') conciliaciones = resultType.data.map((data, i) => {
+                return <SearchContent
+                        key={data._id}
+                        type={resultType.type}
+                        data={data} />
+            });
+            if (resultType.type === 'fuentes') fuentes = resultType.data.map((data, i) => {
+                return <SearchContent
+                        key={data._id}
+                        type={resultType.type}
+                        data={data} />
+            });
+            if (resultType.type === 'tableros') tableros = resultType.data.map((data, i) => {
+                return <SearchContent
+                        key={data._id}
+                        type={resultType.type}
+                        data={data} />
+            });
+            if (resultType.type === 'usuarios') usuarios = resultType.data.map((data, i) => {
+                return <SearchContent
+                        key={data._id}
+                        type={resultType.type}
+                        data={data} />
+            });
         });
     }
+
+    let noData = <p>No Data found</p>;
 
     return (
         <>
@@ -54,11 +76,17 @@ const Search = (props) => {
                     placeholder="Search Data"
                     hasanimation="true" />
                 <div className={searchResultClasses.join(' ')}>
-                    {searchFocus && searchedResult}
+                    {searchFocus && usuarios && usuarios.slice(0, 4)}
+                    {searchFocus && tableros && tableros.slice(0, 4)}
+                    {searchFocus && conciliaciones && conciliaciones.slice(0, 4)}
+                    {searchFocus && fuentes && fuentes.slice(0, 4)}
                 </div>
             </div>
             <div className={styles['search-blur-result']}>
-                {!searchFocus && searchedResult}
+                {!searchFocus && usuarios && usuarios.slice(0, 4)}
+                {!searchFocus && tableros && tableros.slice(0, 4)}
+                {!searchFocus && conciliaciones && conciliaciones.slice(0, 4)}
+                {!searchFocus && fuentes && fuentes.slice(0, 4)}
             </div>
         </>
     )

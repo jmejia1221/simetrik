@@ -47,6 +47,7 @@
         position: absolute;
         top: calc(50% - 1rem);
         color: var(--primary);
+        cursor: pointer;
     }
 }
 @keyframes animateSearch {

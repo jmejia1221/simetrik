@@ -43,14 +43,19 @@ const App = () => {
 
         promises.then(result => {
             setAllData(result);
-            console.log('result', result)
+            console.log(result)
         })
         .catch(err => console.log(err));
+
     }, []);
 
     const searchByType = (data, searchInput, type) => {
         data.forEach((infoItem, i) => {
             if (type !== 'usuariosResult' && infoItem.description.includes(searchInput.toLowerCase())) {
+                initialData[type].push(infoItem);
+            }
+            if (type === 'usuariosResult' && infoItem.email.includes(searchInput.toLowerCase())) {
+                // debugger
                 initialData[type].push(infoItem);
             }
         });

@@ -1,0 +1,41 @@
+.searchContent {
+    background: var(--white);
+    padding: 2rem;
+    border-bottom: .1rem dashed var(--grey-light);
+    display: flex;
+    align-items: baseline;
+}
+.searchDescription {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30rem;
+    display: block;
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
+}
+.tag-type {
+    font-size: 1rem;
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    margin-right: 1rem;
+    text-transform: capitalize;
+    display: inline-block;
+    background-color: var(--grey-light);
+}
+.tag-conciliaciones {
+    color: var(--white);
+    background-color: #023047;
+}
+.tag-usuarios {
+    color: var(--white);
+    background-color: #0077b6;
+}
+.tag-fuentes {
+    color: var(--white);
+    background-color: #01baef;
+}
+.tag-tableros {
+    color: var(--white);
+    background-color: #7400b8;
+}
