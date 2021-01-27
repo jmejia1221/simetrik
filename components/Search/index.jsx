@@ -91,7 +91,7 @@ const Search = (props) => {
                 </div>
                 <header>
                     <h1 className={styles['search-title']}>
-                        Simetrik Search
+                        Search
                     </h1>
                     <div className={styles['filters']}>
                         <h4 className={styles['filter-title']}>Filters</h4>

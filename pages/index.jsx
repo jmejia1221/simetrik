@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components
 import Search from '../components/Search';
@@ -31,9 +31,12 @@ const App = () => {
     const [search, setSearch] = useState('');
     const [searchResult, setSearchResult] = useState([]);
 
+    const isProd = process.env.NODE_ENV === 'production';
+
     useEffect(() => {
-        // const URL = 'http://localhost:3000/api';
-        const URL = 'https://simetrik.vercel.app/api';
+        const URL = isProd ?
+            'https://simetrik.vercel.app/api' :
+            'http://localhost:3000/api';
 
         const p1 = getPromise(URL + '/conciliaciones/', 'conciliaciones');
         const p2 = getPromise(URL + '/fuentes/', 'fuentes');

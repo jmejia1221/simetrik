@@ -39,3 +39,15 @@
     color: var(--white);
     background-color: var(--tableros);
 }
+
+@media screen and (max-width: 750px) {
+    .searchContent {
+        flex-wrap: wrap;
+    }
+    .tag-type {
+        flex: 1 100%;
+        margin: 0;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}

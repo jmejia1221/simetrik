@@ -10,3 +10,15 @@
     position: relative;
     transition: all .5s;
 }
+
+@media screen and (max-width: 850px) {
+    .content {
+        width: 90%;
+    }   
+}
+
+@media screen and (max-width: 470px) {
+    .content {
+        width: 100%;
+    }   
+}
