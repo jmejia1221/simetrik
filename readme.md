@@ -1,4 +1,4 @@
-# Simetrik Test
+# Search Challenge
 
 Created by [@johnmejiah](https://twitter.com/johnmejiah) para [Semtrik](https://simetrik.com)
 
